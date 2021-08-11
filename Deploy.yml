@@ -1,0 +1,42 @@
+---
+  - name: Download Packages
+    hosts: localhost
+    tasks:
+      - name: Tmux
+        apt:
+          name: tmux
+          state: latest
+      - name: Htop
+        apt:
+          name: htop
+          state: htop
+      - name: IOtop
+        apt:
+          name: iotop
+          state: latest
+      - name: IFtop
+        apt:
+          name: iftop
+          state: latest
+      - name: Net Tools
+        apt:
+          name: net-tools
+          state: latest
+      - name: Git
+        apt:
+          name: git
+          state: latest
+      - name: OpenVPN
+        apt:
+          name: openvpn
+          state: latest
+      - name: OhMyBash
+        shell: git clone https://github.com/ohmybash/oh-my-bash.git .ohmybash && sh $PWD/.ohmybash/tools/install.sh
+
+  - name: Configure User Preferences
+    hosts: localhost
+    tasks:
+      - name: Configure Tmux
+        shell: rsync -u $PWD/Config_Files/tmux.conf /home/$USER/.tmux.conf
+      - name: Configure Bash
+        shell: rsync -u $PWD/Config_Files/bashrc /home/$USER/.bashrc
