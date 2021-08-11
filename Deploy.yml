@@ -32,6 +32,8 @@
           state: latest
       - name: OhMyBash
         shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryan/.ohmybash" && su ryan -c "sh /home/ryan/.ohmybash/tools/install.sh"
+        ignore_errors: yes
+
 
   - name: Configure User Preferences
     hosts: localhost
@@ -39,4 +41,4 @@
       - name: Configure Tmux
         shell: rsync -u $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf && chown ryan /home/ryan/.tmux.conf
       - name: Configure Bash
-        shell: su ryan -c "rsync -u $PWD/Config_Files/bashrc /home/ryan/.bashrc"
+        shell: rsync -u $PWD/Config_Files/bashrc /home/ryan/.bashrc && chown ryan /home/ryan/.tmux.conf
