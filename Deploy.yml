@@ -27,7 +27,7 @@
           name: git
           state: latest
       - name: OpenVPN
-        apt:"
+        apt:
           name: openvpn
           state: latest
       - name: OhMyBash
