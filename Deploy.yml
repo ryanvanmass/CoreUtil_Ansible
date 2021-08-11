@@ -31,12 +31,12 @@
           name: openvpn
           state: latest
       - name: OhMyBash
-        shell: git clone https://github.com/ohmybash/oh-my-bash.git .ohmybash && sh $PWD/.ohmybash/tools/install.sh
+        shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryam/.ohmybash" && su ryan -c "sh $PWD/.ohmybash/tools/install.sh"
 
   - name: Configure User Preferences
     hosts: localhost
     tasks:
       - name: Configure Tmux
-        shell: cp $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf
+        shell: su ryan -c "rsync -u $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf"
       - name: Configure Bash
-        shell: cp $PWD/Config_Files/bashrc /home/ryan/.bashrc
+        shell: su ryan -c "rsync -u $PWD/Config_Files/bashrc /home/ryan/.bashrc"
