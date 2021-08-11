@@ -31,7 +31,7 @@
           name: openvpn
           state: latest
       - name: OhMyBash
-        shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryan/.ohmybash" && su ryan -c "sh /home/ryan/.ohmybash/tools/install.sh"
+        shell: git clone https://github.com/ohmybash/oh-my-bash.git /root/.ohmybash && sh /root/.ohmybash/tools/install.sh
         ignore_errors: yes
 
 
@@ -39,6 +39,6 @@
     hosts: localhost
     tasks:
       - name: Configure Tmux
-        shell: rsync $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf && chown ryan /home/ryan/.tmux.conf
+        shell: rsync $PWD/Config_Files/tmux.conf /root/.tmux.conf 
       - name: Configure Bash
-        shell: rsync $PWD/Config_Files/bashrc /home/ryan/.bashrc && chown ryan /home/ryan/.tmux.conf
+        shell: rsync $PWD/Config_Files/bashrc /root/.bashrc
