@@ -31,7 +31,7 @@
           name: openvpn
           state: latest
       - name: OhMyBash
-        shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryam/.ohmybash" && su ryan -c "sh $PWD/.ohmybash/tools/install.sh"
+        shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryan/.ohmybash" && su ryan -c "sh $PWD/.ohmybash/tools/install.sh"
 
   - name: Configure User Preferences
     hosts: localhost
