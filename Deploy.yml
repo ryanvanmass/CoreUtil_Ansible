@@ -37,6 +37,6 @@
     hosts: localhost
     tasks:
       - name: Configure Tmux
-        shell: rsync -u $PWD/Config_Files/tmux.conf /home/$USER/.tmux.conf
+        shell: cp $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf
       - name: Configure Bash
-        shell: rsync -u $PWD/Config_Files/bashrc /home/$USER/.bashrc
+        shell: cp $PWD/Config_Files/bashrc /home/ryan/.bashrc
