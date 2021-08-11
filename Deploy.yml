@@ -9,7 +9,7 @@
       - name: Htop
         apt:
           name: htop
-          state: htop
+          state: latest
       - name: IOtop
         apt:
           name: iotop
