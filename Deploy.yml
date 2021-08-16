@@ -30,6 +30,10 @@
         apt:
           name: openvpn
           state: latest
+      - name: LNAV
+        apt:
+          name: lnav
+          state: latest
       - name: OhMyBash
         shell: git clone https://github.com/ohmybash/oh-my-bash.git /root/.ohmybash && sh /root/.ohmybash/tools/install.sh
         ignore_errors: yes
