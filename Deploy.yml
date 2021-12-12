@@ -26,10 +26,6 @@
         apt:
           name: git
           state: latest
-      - name: OpenVPN
-        apt:
-          name: openvpn
-          state: latest
       - name: LNAV
         apt:
           name: lnav
