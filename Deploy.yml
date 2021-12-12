@@ -3,33 +3,33 @@
     hosts: localhost
     tasks:
       - name: Tmux
-        apt:
+        zypper:
           name: tmux
-          state: latest
+          state: present
       - name: Htop
-        apt:
+        zypper:
           name: htop
-          state: latest
+          state: present
       - name: IOtop
-        apt:
+        zypper:
           name: iotop
-          state: latest
+          state: present
       - name: IFtop
-        apt:
+        zypper:
           name: iftop
-          state: latest
+          state: present
       - name: Net Tools
-        apt:
-          name: net-tools
-          state: latest
+        zypper:
+          name: net-tools-deprecated
+          state: present
       - name: Git
-        apt:
+        zypper:
           name: git
-          state: latest
+          state: present
       - name: LNAV
-        apt:
+        zypper:
           name: lnav
-          state: latest
+          state: present
       - name: OhMyBash
         shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryan/.ohmybash" && su ryan -c "sh /home/ryan/.ohmybash/tools/install.sh"
         ignore_errors: yes
