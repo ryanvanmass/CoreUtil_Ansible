@@ -47,7 +47,7 @@
     hosts: localhost
     tasks:
       - name: Copy Services to System
-        shell: rsny $PWD/Services/* /etc/systemd/system
+        shell: rsnc $PWD/Services/* /etc/systemd/system
       - name: Reload Services
         systemd:
           daemon_reload: yes
