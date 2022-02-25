@@ -1,0 +1,9 @@
+[Unit]
+Description=Update_OhMyPosh
+
+[Service]
+Type=oneshot
+ExecStart=rm -f /usr/local/bin/oh-my-posh
+ExecStart=wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+ExecStart=chmod +x /usr/local/bin/oh-my-posh
+WorkingDirectory=/

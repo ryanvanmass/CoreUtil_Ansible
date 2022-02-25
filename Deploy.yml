@@ -30,10 +30,10 @@
         apt:
           name: lnav
           state: latest
-      - name: OhMyBash
-        shell: su ryan -c "git clone https://github.com/ohmybash/oh-my-bash.git /home/ryan/.ohmybash" && su ryan -c "sh /home/ryan/.ohmybash/tools/install.sh"
-        ignore_errors: yes
-
+      - name: OhMyPosh
+        shell: wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh && chmod +x /usr/local/bin/oh-my-posh
+      - name: OhMyPosh Theme
+        shell: mkdir /home/ryan/.poshthemes && wget http://hdmi.vanmassenhoven.com/index.php/s/aNncBdbZf8fzmDc/download/Theme.omp.json -O /home/ryan/.poshthemes/_MyTheme.omp.json
 
   - name: Configure User Preferences
     hosts: localhost
@@ -41,4 +41,18 @@
       - name: Configure Tmux
         shell: rsync $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf && chown ryan /home/ryan/.tmux.conf
       - name: Configure Bash
-        shell: rsync $PWD/Config_Files/bashrc /home/ryan/.bashrc && chown ryan /home/ryan/.tmux.conf
+        shell: echo 'eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/_MyTheme.omp.json)"'
+
+  - name: Set Up Services
+    hosts: localhost
+    tasks:
+      - name: Copy Services to System
+        shell: rsny $PWD/Services/* /etc/systemd/system
+      - name: Reload Services
+        systemd:
+          daemon_reload: yes
+      - name: Start Update_OhMyPosh Timer
+        systemd:
+          name: Update_OhMyPosh.timer
+          state: started
+          enabled: yes
