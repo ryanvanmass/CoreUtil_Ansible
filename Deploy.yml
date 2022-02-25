@@ -38,3 +38,17 @@
     tasks:
       - name: Configure Tmux
         shell: rsync $PWD/Config_Files/tmux.conf /home/ryan/.tmux.conf && chown ryan /home/ryan/.tmux.conf
+
+  - name: Set Up Services
+    hosts: localhost
+    tasks:
+      - name: Copy Services to System
+        shell: rsny $PWD/Services/* /etc/systemd/system
+      - name: Reload Services
+        systemd:
+          daemon_reload: yes
+      - name: Start Update_OhMyPosh Timer
+        systemd:
+          name: Update_OhMyPosh.timer
+          state: started
+          enabled: yes
