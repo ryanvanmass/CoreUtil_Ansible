@@ -2,33 +2,16 @@
   - name: Download Packages
     hosts: localhost
     tasks:
-      - name: Tmux
+      - name: Core Utilities
         apt:
-          name: tmux
-          state: latest
-      - name: Htop
-        apt:
-          name: htop
-          state: latest
-      - name: IOtop
-        apt:
-          name: iotop
-          state: latest
-      - name: IFtop
-        apt:
-          name: iftop
-          state: latest
-      - name: Net Tools
-        apt:
-          name: net-tools
-          state: latest
-      - name: Git
-        apt:
-          name: git
-          state: latest
-      - name: LNAV
-        apt:
-          name: lnav
+          name: 
+            - tmux
+            - htop
+            - iotop
+            - iftop
+            - net-tools
+            - lnav
+            - git
           state: latest
      
   - name: Configure User Preferences
